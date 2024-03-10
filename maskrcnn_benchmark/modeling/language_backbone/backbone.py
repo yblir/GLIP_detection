@@ -37,15 +37,9 @@ def build_clip_backbone(cfg):
     return model
 
 
-# def build_backbone(cfg):
-#     assert cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE in registry.LANGUAGE_BACKBONES, \
-#         "cfg.MODEL.LANGUAGE_BACKBONE.TYPE: {} is not registered in registry".format(
-#             cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE
-#         )
-#     return registry.LANGUAGE_BACKBONES[cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE](cfg)
 def build_backbone(cfg):
-    # assert cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE in registry.LANGUAGE_BACKBONES, \
-    #     "cfg.MODEL.LANGUAGE_BACKBONE.TYPE: {} is not registered in registry".format(
-    #         cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE
-    #     )
-    return registry.LANGUAGE_BACKBONES['bert-base-uncased'](cfg)
+    assert cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE in registry.LANGUAGE_BACKBONES, \
+        "cfg.MODEL.LANGUAGE_BACKBONE.TYPE: {} is not registered in registry".format(
+            cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE
+        )
+    return registry.LANGUAGE_BACKBONES[cfg.MODEL.LANGUAGE_BACKBONE.MODEL_TYPE](cfg)
